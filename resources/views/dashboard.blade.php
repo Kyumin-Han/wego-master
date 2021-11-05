@@ -15,11 +15,6 @@
                                     src="{{'/storage/images/sosoeueunOctocat.png' }}"
                                     alt="프로필 사진">
 
-                                    <!-- Required form plugin -->
-                                    <link
-                                        href="https://cdn.jsdelivr.net/npm/@tailwindcss/custom-forms@0.2.1/dist/custom-forms.css"
-                                        rel="stylesheet"/>
-
                                     <label
                                         class="
                                                 w-30
