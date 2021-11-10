@@ -52,5 +52,6 @@ Route::post('/wego/projectStore', [ProjectController::class, 'store']);
 
 Route::get('/wego/projectList', [ProjectController::class, 'list'])->name('projectList');
 
+Route::post('/wego/updateuser/{id}', [ProfileController::class, 'update'])->name('profileUpdate');
 
 require __DIR__.'/auth.php';

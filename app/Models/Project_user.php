@@ -9,6 +9,10 @@ class Project_user extends Model
 {
     use HasFactory;
 
+    public function project() {
+        return $this->belongsTo(Project::class);
+    }
+
     protected $fillable = [
         'project_id',
         'user_id'
