@@ -39,7 +39,7 @@
                                                 duration-15
                                             ">
                                         <span class="mt-2 text-base leading-normal">프로필 이미지를 설정 하세요!</span>
-                                        <form action="{{ route('profileUpdate', ['id'=>auth()->user()->id]) }}">\
+                                        <form action="{{ route('profileUpdate', ['id'=>auth()->user()->id]) }}">
                                             @csrf
                                             <input type="file" name="imageFile" class="hidden"/>
                                         </form>

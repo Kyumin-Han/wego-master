@@ -47,6 +47,11 @@ Route::get('/wego/showProject', function () {
     return view('front/showProject');
 })->name('showProject');
 
+// 내 정보가 있을 경우 페이지
+Route::get('/wego/mypage', function () {
+    return view('front/mypage');
+})->name('mypage');
+
 
 Route::post('/wego/projectStore', [ProjectController::class, 'store']);
 
