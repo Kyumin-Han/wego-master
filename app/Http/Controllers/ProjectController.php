@@ -6,9 +6,19 @@ use App\Models\Project;
 use App\Models\Project_user;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class ProjectController extends Controller
 {
+    protected function uploadPostImage($request) {
+        $name = $request->file('file')->getClientOriginalName();
+        $extension = $request->file('file')->extension();
+        $nameWithoutExtension = Str::of($name)->basename('.'.$extension);
+        $fileName = $nameWithoutExtension . '_' . time() . '.' . $extension;
+        $request->file('file')->storeAs('public/files', $fileName);
+        return $fileName;
+    }
+
     public function store(Request $request) {
         $name = $request->projectTitle;
         $outline = $request->outline;
@@ -21,6 +31,19 @@ class ProjectController extends Controller
         $project->explanation = $explanation;
 
         $project->save();
+
+        $projectId = Project::where('name', $name)->where('explanation', $explanation)->get();
+
+        dd($projectId);
+
+        // if($request->file('imageFile')) {
+        //     if($user->image != null) {
+        //         $imagePath = 'public/images/'.$user->image;
+        //         Storage::delete($imagePath);
+        //     }
+        //     $user->image=$this->uploadPostImage($request);
+        // }
+        // dd($file);
 
         return redirect('/wego/projectList');
     }

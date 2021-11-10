@@ -42,16 +42,4 @@ class ProfileController extends Controller
         return redirect('dashboard');
     }
 
-    public function imgdelete($id) {
-        $user = User::find($id);
-
-        $imagePath = 'public/images/'.$user->image;
-        Storage::delete($imagePath);
-
-        $user->image = null;
-
-        $user->save();
-
-        return redirect('dashboard');
-    }
 }

@@ -70,31 +70,11 @@
                                                 </div>
 
                                          <div>
-                                            <label
-                                            class="
-                                                w-30
-                                                mt-5
-                                                mb-5
-                                                flex flex-col
-                                                items-center
-                                                px-10
-                                                py-2
-                                                bg-white
-                                                rounded-md
-                                                shadow-md
-                                                tracking-wide
-                                                uppercase
-                                                border border-blue
-                                                cursor-pointer
-                                                hover:bg-purple-600 hover:text-white
-                                                text-purple-600
-                                                ease-linear
-                                                transition-all
-                                                duration-15
-                                            ">
-                                            <span class="mt-2 text-base leading-normal">첨부파일</span>
-                                            <input type="file" name="files[]" class="hidden"/>
-                                        </label>
+                                            
+                                        <label class="text-sm font-medium text-gray-900 block mb-2" for="user_avatar">첨부파일 선택</label>
+                                        <input class="block w-full cursor-pointer bg-gray-50 border border-gray-300 text-gray-900 focus:outline-none focus:border-transparent text-sm rounded-lg" aria-describedby="user_avatar_help" name="file" id="user_avatar" type="file">
+                                        
+
                                          </div>
 
                                                 <div>
@@ -132,7 +112,7 @@
                                                                 transition-all
                                                                 duration-150
                                                                 "
-                                                    type="button">
+                                                    type="submit">
                                                     Button
                                                 </button>
                                             </div>
