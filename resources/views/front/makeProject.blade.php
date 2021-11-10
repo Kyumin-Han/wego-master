@@ -133,7 +133,7 @@
                                                                 duration-150
                                                                 "
                                                     type="button">
-                                                    Button
+                                                    저장하기
                                                 </button>
                                             </div>
 

@@ -9,7 +9,7 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     
                     
-              여기는 진행중인 프로젝트 리스트 보는 페이지에요 하이~
+              진행중인 프로젝트 리스트
 
                 </div>
                 @foreach ($projects as $project)
