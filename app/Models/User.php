@@ -12,6 +12,13 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public function imagePath() {
+        // $path = '/storage/images/';
+        $path = env('IMAGE_PATH', '/storage/images');
+        $imageFile = $this->image ?? 'no_image_available.png';
+        return $path.$imageFile;
+    }
+
     public function project() {
         return $this->belongsTo(Project::class);
     }
