@@ -42,6 +42,12 @@ Route::post('/wego/makeMinutes', function () {
     return view('front/makeMinutes');
 })->name('makeMinutes');
 
+// 상세보기페이지
+Route::get('/wego/showProject', function () {
+    return view('front/showProject');
+})->name('showProject');
+
+
 Route::post('/wego/projectStore', [ProjectController::class, 'store']);
 
 Route::get('/wego/projectList', [ProjectController::class, 'list'])->name('projectList');
