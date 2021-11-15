@@ -19,6 +19,7 @@ class CreateProjectsTable extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->mediumText('outline');
             $table->mediumText('explanation');
+            $table->string('file')->nullable();
             $table->timestamps();
         });
     }

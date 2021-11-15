@@ -6,11 +6,12 @@ use App\Models\Project;
 use App\Models\Project_user;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ProjectController extends Controller
 {
-    protected function uploadPostImage($request) {
+    protected function uploadFile($request) {
         $name = $request->file('file')->getClientOriginalName();
         $extension = $request->file('file')->extension();
         $nameWithoutExtension = Str::of($name)->basename('.'.$extension);
@@ -23,27 +24,23 @@ class ProjectController extends Controller
         $name = $request->projectTitle;
         $outline = $request->outline;
         $explanation = $request->expectation;
+        $file = $request->file;
 
         $project = new Project();
         $project->name = $name;
         $project->user_id = Auth::user()->id;
         $project->outline = $outline;
         $project->explanation = $explanation;
+        
+        if($request->file('file')) {
+            if($project->file != null) {
+                $imagePath = 'public/images/'.$project->file;
+                Storage::delete($imagePath);
+            }
+            $project->file=$this->uploadFile($request);
+        }
 
         $project->save();
-
-        $projectId = Project::where('name', $name)->where('explanation', $explanation)->get();
-
-        dd($projectId);
-
-        // if($request->file('imageFile')) {
-        //     if($user->image != null) {
-        //         $imagePath = 'public/images/'.$user->image;
-        //         Storage::delete($imagePath);
-        //     }
-        //     $user->image=$this->uploadPostImage($request);
-        // }
-        // dd($file);
 
         return redirect('/wego/projectList');
     }

@@ -112,8 +112,13 @@
                                                                 transition-all
                                                                 duration-150
                                                                 "
+<<<<<<< HEAD
                                                     type="submit">
                                                     Button
+=======
+                                                    type="button">
+                                                    저장하기
+>>>>>>> 8213e86aa5ca87dc31c4000c7548117cb7095111
                                                 </button>
                                             </div>
 
