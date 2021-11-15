@@ -28,7 +28,6 @@
                     <x-nav-link :href="route('minutesList')" :active="request()->routeIs('minutesList')">
                         {{ __('회의록') }}
                     </x-nav-link>
-
                 </div>
             </div>
 

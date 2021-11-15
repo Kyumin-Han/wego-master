@@ -50,4 +50,11 @@ class ProjectController extends Controller
         $project = Project::latest()->paginate(5);
         return view('front/projectList', ['projects'=>$project, 'participant'=>$participant]);
     }
+
+    public function show(Request $request, $id) {
+        $project = Project::find($id);
+        $page = $request->page;
+
+        return view('front/showProject',compact('project', 'page'));
+    }
 }

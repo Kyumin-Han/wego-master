@@ -15,7 +15,7 @@
                 @foreach ($projects as $project)
                     @if (auth()->user()->id == $project->user->id)
                         <div class="p-6 bg-white border-b border-gray-200">
-                            프로젝트 이름: {{ $project->name }} <br>
+                            프로젝트 이름: <a href="{{ route('showProject', ['id'=>$project->id, 'page'=>$projects->currentPage()]) }}">{{ $project->name }}</a> <br>
                             프로젝트 개요: {{ $project->outline }}<br>
                             기대효과: {{ $project->explanation }}<br>
                             팀장: {{ $project->user->name }}
