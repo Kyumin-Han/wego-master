@@ -16,6 +16,13 @@ class Project extends Model
         'explanation',
     ];
 
+    public function participants() {
+        // return $this->belongsToMany(User::class);
+
+        return $this->belongsToMany(User::class, 'project_users', 'project_id', 'user_id', 'id', 'id', 'users');
+        
+    }
+
     public function user() {
         return $this->belongsTo(User::class);
     }

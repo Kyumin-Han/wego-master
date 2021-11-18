@@ -34,15 +34,17 @@
                                                 >
                                                 팀원
                                             </div>
-                                            <div class="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm">
-                                                이메일 받아와서 출력 하나 씩
-                                            </div>
+                                            @foreach ($project->participants as $participant)
+                                                <div class="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm">
+                                                    {{ $participant->email }}
+                                                </div>
+                                            @endforeach
                                         </div>
 
                                         <label for="">프로젝트 개요</label>
                                         <div
                                             class="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm">
-                                            여기다 들어와야된다잉
+                                            {{ $project->outline }}
                                         </div>
 
                                         <label>
@@ -50,14 +52,14 @@
                                         </label>
                                         <div
                                             class="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm">
-                                            여기다 들어와야된다잉
+                                            {{ $project->file }}
                                         </div>
 
 
                                         <label for="">기대효과</label>
                                         <div
                                             class="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm">
-                                            여기다 들어와야된다잉
+                                            {{ $project->explanation }}
                                         </div>
                                             
                                     </div>

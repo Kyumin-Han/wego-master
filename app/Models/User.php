@@ -12,6 +12,10 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public function participate() {
+        return $this->belongsToMany(Project::class, 'project_users', 'user_id', 'project_id', 'id', 'id', 'projects');
+    }
+
     public function imagePath() {
         // $path = '/storage/images/';
         $path = env('IMAGE_PATH', '/storage/images');

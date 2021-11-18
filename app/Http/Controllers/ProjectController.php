@@ -42,13 +42,20 @@ class ProjectController extends Controller
 
         $project->save();
 
+        $participant = new Project_user();
+        $participant->project_id = $project->id;
+        $participant->user_id = auth()->user()->id;
+
+        $participant->save();
+       
+
         return redirect('/wego/projectList');
     }
 
     public function list() {
-        $participant = Project_user::find(Auth::user()->id);
-        $project = Project::latest()->paginate(5);
-        return view('front/projectList', ['projects'=>$project, 'participant'=>$participant]);
+        $ownproject = Project::where('user_id', auth()->user()->id)->latest()->paginate(5);
+        $project = auth()->user()->participate()->paginate(5);
+        return view('front/projectList', ['projects'=>$project, 'ownprojects'=>$ownproject]);
     }
 
     public function show(Request $request, $id) {
