@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\MinutesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
+use App\Models\Project;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,13 +37,14 @@ Route::get('/wego/makeProject', function () {
 //     return view('front/projectList');
 // })->name('projectList');
 
-Route::get('/wego/minutesList', function () {
-    return view('front/minutesList');
-})->name('minutesList');
+// Route::get('/wego/minutesList', function () {
+//     return view('front/minutesList');
+// })->name('minutesList');
 
-Route::post('/wego/makeMinutes', function () {
-    return view('front/makeMinutes');
-})->name('makeMinutes');
+// Route::get('/wego/makeMinutes', function () {
+//     $ownproject = Project::where('user_id', auth()->user()->id)->latest()->get();
+//     return view('front/makeMinutes', ['projects'=>$ownproject]);
+// })->name('makeMinutes');
 
 
 // 내 정보가 있을 경우 페이지
@@ -58,5 +61,13 @@ Route::get('/wego/projectList', [ProjectController::class, 'list'])->name('proje
 Route::get('/wego/showProject/{id}', [ProjectController::class, 'show'])->name('showProject');
 
 Route::post('/wego/updateuser/{id}', [ProfileController::class, 'update'])->name('profileUpdate');
+
+Route::get('/wego/mypage', [ProfileController::class, 'mypage'])->name('mypage');
+
+Route::get('/wego/makeMinutes', [MinutesController::class, 'make'])->name('makeMinutes');
+
+Route::post('/wego/minuteStore', [MinutesController::class, 'store']);
+
+Route::get('/wego/minuteList', [MinutesController::class, 'list'])->name('minutesList');
 
 require __DIR__.'/auth.php';

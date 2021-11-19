@@ -13,9 +13,9 @@
          <img
          class="logo"
          alt="사진없어여"
-         src="/image/HatchfulExport-All/logo_transparent.png">
+         src="{{ '/storage/images/logo.png' }}">
      <form
-         action="/projectStore"
+         action="/wego/minuteStore"
          method="post"
          enctype="multipart/form-data"
          onkeydown="return event.key !='Enter';">
@@ -23,8 +23,10 @@
 
          <div class="form-group">
              <label for="exampleFormControlSelect1">프로젝트 명을 선택해 주세요.</label>
-             <select class="form-control" name="people" id="exampleFormControlSelect1">
-                 <option>1</option>
+             <select class="form-control" name="pname" id="exampleFormControlSelect1">
+                @foreach ($projects as $project)
+                    <option>{{ $project->name }}</option>
+                @endforeach
              </select>
          </div>
 
@@ -41,7 +43,7 @@
                  <label for="exampleFormControlTextarea1">회의 내용</label>
                  <textarea
                      class="form-control"
-                     name="outline"
+                     name="todo"
                      id="exampleFormControlTextarea1"
                      rows="3"></textarea>
              </div>
@@ -52,7 +54,7 @@
                  <label for="exampleFormControlTextarea1">다음 회의 내용</label>
                  <textarea
                      class="form-control"
-                     name="outline"
+                     name="nexttodo"
                      id="exampleFormControlTextarea1"
                      rows="3"></textarea>
              </div>
@@ -62,26 +64,13 @@
                  <label for="exampleFormControlFile1">Example file input</label>
                  <input
                      type="file"
-                     name="files[]"
+                     name="file"
                      class="form-control-file"
                      id="exampleFormControlFile1">
              </div>
 
-             <div onclick="checkPlus()">체크리스트 생성</div>
-
-             <button type="button" class="btm_image" id="img_btn" onclick="checkPlus()">
-     
-                 <img src="\image\icon\list_add_black_1x.png">
-     
-             </button>
-             <div class="checkList">
-     
-                 <div class="form-check" id="check_plus"></div>
-     
-             </div>
+             
              <br>
-     
-             <div id="plusDiv"></div>
              <button type="submit" class="btn btn-primary">저장</button>
              </form>
 
@@ -96,41 +85,4 @@
     </div>
 </x-app-layout>
 
-<script>
-    function enterkey() {
-        if (window.event.keyCode == 13) {
-            divPlus();
-            
-            $('input').remove("#rewrite");
-        
-        }
-    }
 
-    function divPlus() {
-        let title = document
-            .getElementById('rewrite')
-            .value;
-
-        // 체크리스트에 추가 코드
-        let temp_html = `  <div class="form-check">
-                            <input class="form-check-input" name="lists[]" type="checkbox" checked value="${title}" id="goCheck">
-                            <label class="form-check-label" for="defaultCheck1">
-                                ${title}
-                            </label>
-                            </div>
-                        `;
-        $('#check_plus').append(temp_html)
-
-        // 텍스트 아리아 포함 추가 코드
-
-        let temp_html_div = `<label class="form-check-label" for="defaultCheck1">
-                                ${title}
-                        </label>
-                        <br>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        <br>
-                        `;
-        $('#plusDiv').append(temp_html_div)
-    };
-
-</script>

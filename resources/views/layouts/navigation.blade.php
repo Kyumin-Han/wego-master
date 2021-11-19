@@ -24,6 +24,10 @@
                     <x-nav-link :href="route('projectList')" :active="request()->routeIs('projectList')">
                         {{ __('진행 중인 프로젝트') }}
                     </x-nav-link>
+                    
+                    <x-nav-link :href="route('makeMinutes')" :active="request()->routeIs('makeMinutes')">
+                        {{ __('회의록 작성') }}
+                    </x-nav-link>
 
                     <x-nav-link :href="route('minutesList')" :active="request()->routeIs('minutesList')">
                         {{ __('회의록') }}

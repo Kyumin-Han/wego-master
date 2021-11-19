@@ -39,17 +39,17 @@
                                         {{ auth()->user()->name }}
                                     </h3>
                                     <div class="mb-2 text-blueGray-600 mt-10">
-                                        <i class="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>기술
+                                        <i class="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>{{ auth()->user()->tech }}
                                     </div>
                                     <div class="mb-2 text-blueGray-600">
-                                        <i class="fas fa-university mr-2 text-lg text-blueGray-400"></i>연락처
+                                        <i class="fas fa-university mr-2 text-lg text-blueGray-400"></i>{{ auth()->user()->address }}
                                     </div>
                                 </div>
                                 <div class="mt-10 py-10 border-t border-blueGray-200 text-center">
                                     <div class="flex flex-wrap justify-center">
                                         <div class="w-full lg:w-9/12 px-4">
                                             <p class="mb-4 text-lg leading-relaxed text-blueGray-700">
-                                                자기소개
+                                                {{ auth()->user()->introduce }}
                                             </p>
                                         </div>
                                     </div>

@@ -39,7 +39,11 @@ class ProfileController extends Controller
 
         $user->save();
 
-        return redirect('dashboard');
+        return redirect()->route('mypage', ['user'=>$user]);
+    }
+
+    public function mypage() {
+        return view('front.mypage');
     }
 
 }

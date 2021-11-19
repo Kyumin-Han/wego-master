@@ -24,7 +24,10 @@ class ProjectController extends Controller
         $name = $request->projectTitle;
         $outline = $request->outline;
         $explanation = $request->expectation;
-        $file = $request->file;
+
+        $request->validate([
+            'name' => 'unique:projects,name'
+        ]);
 
         $project = new Project();
         $project->name = $name;
@@ -53,9 +56,8 @@ class ProjectController extends Controller
     }
 
     public function list() {
-        $ownproject = Project::where('user_id', auth()->user()->id)->latest()->paginate(5);
         $project = auth()->user()->participate()->paginate(5);
-        return view('front/projectList', ['projects'=>$project, 'ownprojects'=>$ownproject]);
+        return view('front/projectList', ['projects'=>$project]);
     }
 
     public function show(Request $request, $id) {
